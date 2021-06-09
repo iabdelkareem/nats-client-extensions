@@ -1,5 +1,7 @@
 # NATS.Client.Extensions.DependencyInjection
 
+[![Build Status](https://dev.azure.com/ibrahimabdelkareem0432/OpenSource/_apis/build/status/NATS.Client.Extensions?branchName=main)](https://dev.azure.com/ibrahimabdelkareem0432/OpenSource/_build/latest?definitionId=3&branchName=main) [![NuGet](https://badgen.net/nuget/v/NATS.Client.Extensions.DependencyInjection)](https://www.nuget.org/packages/NATS.Client.Extensions.DependencyInjection/)
+
 **NATS.Client.Extensions.DependencyInjection** enables dependency injection for [**NATS.Client**](https://github.com/nats-io/nats.net) connection types (i.e., IConnection, IEncodedConnection) via Microsoft DependencyInjection, And introduces INatsClientConnectionFactory abstraction, And provides an easy way for configuring NATS.Client.Options.
 
 
