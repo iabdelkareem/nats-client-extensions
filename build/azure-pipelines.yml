@@ -19,16 +19,18 @@ variables:
 
 stages:
 - stage: Build
-    steps:
-    - script: dotnet build -c Release
-      displayName: 'Build'
+  jobs:
+    - job: Build
+      steps:
+      - script: dotnet build -c Release
+        displayName: 'Build'
 
-    - script: dotnet test -c Release --no-build
-      displayName: 'Test'
+      - script: dotnet test -c Release --no-build
+        displayName: 'Test'
 
-    - script: dotnet pack --no-build -c Release -o $(Build.ArtifactStagingDirectory) /p:ContinuousIntegrationBuild=true
-      displayName: 'Pack'
-      condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+      - script: dotnet pack --no-build -c Release -o $(Build.ArtifactStagingDirectory) /p:ContinuousIntegrationBuild=true
+        displayName: 'Pack'
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
 
 - stage: Push
   dependsOn: Build
