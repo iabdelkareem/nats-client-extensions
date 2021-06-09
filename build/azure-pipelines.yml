@@ -27,10 +27,16 @@ stages:
 
       - script: dotnet test -c Release --no-build
         displayName: 'Test'
-
-      - script: dotnet pack --no-build -c Release -o $(Build.ArtifactStagingDirectory) /p:ContinuousIntegrationBuild=true
+      
+      - script: dotnet pack --no-build -c Release -o $(Build.ArtifactStagingDirectory)/packages /p:ContinuousIntegrationBuild=true
         displayName: 'Pack'
         condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: Infrastructure'
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/packages'
+          ArtifactName: packages
 
 - stage: Push
   dependsOn: Build
@@ -45,4 +51,4 @@ stages:
             steps:
             - script: dotnet nuget push "*.nupkg" --api-key $(NugetApiKey) --source https://api.nuget.org/v3/index.json
               displayName: 'Push'
-              workingDirectory: $(Build.ArtifactStagingDirectory)
+              workingDirectory: $(Pipeline.WorkSpace)/packages
