@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{80F0E064-2C87-48F0-8426-84FEB02E6432}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NATS.Client.Extensions.DependencyInjection", "src\NATS.Client.Extensions.DependencyInjection\NATS.Client.Extensions.DependencyInjection.csproj", "{F78F5ECC-5ADD-426C-977C-C0EF311F113B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C1FB8A21-B62B-4068-9FA6-C28AEFBDB7E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NATS.Client.Extensions.DependencyInjection.Tests", "test\NATS.Client.Extensions.DependencyInjection.Tests\NATS.Client.Extensions.DependencyInjection.Tests.csproj", "{C49999F2-AD45-45B9-BDCC-3385A77D98E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{DA3DFB2C-7B10-41A4-AA93-3BC2B73EA335}"
+	ProjectSection(SolutionItems) = preProject
+		build\azure-pipelines.yml = build\azure-pipelines.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F78F5ECC-5ADD-426C-977C-C0EF311F113B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78F5ECC-5ADD-426C-977C-C0EF311F113B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78F5ECC-5ADD-426C-977C-C0EF311F113B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78F5ECC-5ADD-426C-977C-C0EF311F113B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C49999F2-AD45-45B9-BDCC-3385A77D98E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C49999F2-AD45-45B9-BDCC-3385A77D98E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C49999F2-AD45-45B9-BDCC-3385A77D98E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C49999F2-AD45-45B9-BDCC-3385A77D98E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F78F5ECC-5ADD-426C-977C-C0EF311F113B} = {80F0E064-2C87-48F0-8426-84FEB02E6432}
+		{C49999F2-AD45-45B9-BDCC-3385A77D98E7} = {C1FB8A21-B62B-4068-9FA6-C28AEFBDB7E2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E11F160-42CB-42D2-A93E-C89292ECA43A}
+	EndGlobalSection
+EndGlobal
