@@ -1,4 +1,4 @@
-﻿using System;
+﻿using NATS.Client.JetStream;
 
 namespace NATS.Client
 {
@@ -11,28 +11,10 @@ namespace NATS.Client
             _connectionFactory = connectionFactory;
         }
 
-        public IConnection CreateConnection(Action<Options>? configureOptions = null)
+        public IJetStream CreateJetStreamContext(Options options)
         {
-            var options = ConnectionFactory.GetDefaultOptions();
-            configureOptions?.Invoke(options);
-            return CreateConnection(options);
-        }
-
-        public IConnection CreateConnection(Options options)
-        {
-            return _connectionFactory.CreateConnection(options);
-        }
-
-        public IEncodedConnection CreateEncodedConnection(Action<Options>? configureOptions = null)
-        {
-            var options = ConnectionFactory.GetDefaultOptions();
-            configureOptions?.Invoke(options);
-            return CreateEncodedConnection(options);
-        }
-
-        public IEncodedConnection CreateEncodedConnection(Options options)
-        {
-            return _connectionFactory.CreateEncodedConnection(options);
+            var connection = _connectionFactory.CreateConnection(options);
+            return connection.CreateJetStreamContext();
         }
     }
 }

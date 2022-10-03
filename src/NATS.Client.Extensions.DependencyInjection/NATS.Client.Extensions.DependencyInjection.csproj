@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>Latest</LangVersion>
     <IsPackable>true</IsPackable>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionPrefix>1.0.2</VersionPrefix>
     <PackageTags>NATS;NATS.Client;DependencyInjection;NATS.Client.DependencyInjection;NATS.Client.Extensions.DependencyInjection;</PackageTags>
     <Authors>Ibrahim Abdelkareem</Authors>
     <PackageProjectUrl>https://github.com/happy-travel/nats-client-extensions</PackageProjectUrl>
@@ -14,13 +14,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Description>
-      This Package Contains The Following:
-      ============================
-      - Enables Dependency Injection for NATS.Client connection types (i.e., IConnection, IEncodedConnection) via Microsoft DependencyInjection.
-      - INatsClientConnectionFactory abstraction
-      - An easy way for configuring NATS.Client.Options
-    </Description>
+    <Description>Added JetStream context</Description>
   </PropertyGroup>
 
 

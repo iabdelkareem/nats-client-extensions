@@ -1,4 +1,4 @@
-﻿using System;
+﻿using NATS.Client.JetStream;
 
 namespace NATS.Client
 {
@@ -8,31 +8,10 @@ namespace NATS.Client
     public interface INatsClientConnectionFactory
     {
         /// <summary>
-        /// Create new connection
+        /// Create new JetStream context
         /// </summary>
-        /// <param name="configureOptions">Optionally, configure the options to be used when creating the connection.</param>
-        /// <returns>New instance of <see cref="IConnection"/></returns>
-        IConnection CreateConnection(Action<Options>? configureOptions = null);
-
-        /// <summary>
-        /// Create new connection
-        /// </summary>
-        /// <param name="options">The options to be used when creating the connection.</param>
-        /// <returns>New instance of <see cref="IConnection"/></returns>
-        IConnection CreateConnection(Options options);
-
-        /// <summary>
-        /// Create new encoded connection
-        /// </summary>
-        /// <param name="configureOptions">Optionally, configure the options to be used when creating the connection.</param>
-        /// <returns>New instance of <see cref="IEncodedConnection"/></returns>
-        IEncodedConnection CreateEncodedConnection(Action<Options>? configureOptions  = null);
-
-        /// <summary>
-        /// Create new encoded connection
-        /// </summary>
-        /// <param name="options">The options to be used when creating the connection.</param>
-        /// <returns>New instance of <see cref="IEncodedConnection"/></returns>
-        IEncodedConnection CreateEncodedConnection(Options options);
+        /// <param name="options"></param>
+        /// <returns></returns>
+        IJetStream CreateJetStreamContext(Options options);
     }
 }

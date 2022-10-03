@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using NATS.Client.JetStream;
 
 namespace NATS.Client
 {
@@ -23,20 +24,12 @@ namespace NATS.Client
             services.AddSingleton<ConnectionFactory>();
             services.AddSingleton<INatsClientConnectionFactory, NatsClientConnectionFactoryDecorator>();
 
-            services.TryAdd(new ServiceDescriptor(typeof(IConnection), sp =>
+            services.TryAdd(new ServiceDescriptor(typeof(IJetStream), sp =>
             {
                 var options = sp.GetRequiredService<Options>();
                 var connectionFactory = sp.GetRequiredService<INatsClientConnectionFactory>();
-                return connectionFactory.CreateConnection(options);
+                return connectionFactory.CreateJetStreamContext(options);
             }, connectionServiceLifeTime));
-
-            services.TryAdd(new ServiceDescriptor(typeof(IEncodedConnection), sp =>
-            {
-                var options = sp.GetRequiredService<Options>();
-                var connectionFactory = sp.GetRequiredService<INatsClientConnectionFactory>();
-                return connectionFactory.CreateEncodedConnection(options);
-            }, connectionServiceLifeTime));
-
 
             return services;
         }
