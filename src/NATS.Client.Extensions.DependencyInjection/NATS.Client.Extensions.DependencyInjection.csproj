@@ -5,10 +5,10 @@
     <Nullable>enable</Nullable>
     <LangVersion>Latest</LangVersion>
     <IsPackable>true</IsPackable>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>1.0.1</VersionPrefix>
     <PackageTags>NATS;NATS.Client;DependencyInjection;NATS.Client.DependencyInjection;NATS.Client.Extensions.DependencyInjection;</PackageTags>
     <Authors>Ibrahim Abdelkareem</Authors>
-    <PackageProjectUrl>https://github.com/iabdelkareem/nats-client-extensions.git</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/happy-travel/nats-client-extensions</PackageProjectUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
