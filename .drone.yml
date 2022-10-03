@@ -1,0 +1,66 @@
+---
+kind: pipeline
+name: Nuget packages
+        
+trigger:
+  branch:
+    - main
+  event:
+    - push
+    
+steps:
+- name: Build packages
+  image: mcr.microsoft.com/dotnet/sdk:6.0
+  environment:
+    GITHUB_TOKEN:
+      from_secret: GITHUB_TOKEN
+  commands:
+    - dotnet build -c Release
+    - dotnet pack -c Release -o out
+    - dotnet nuget push "./out/**/*.nupkg" --skip-duplicate --no-symbols -s github
+
+- name: discord
+  pull: always
+  image: appleboy/drone-discord
+  settings:
+    avatar_url: https://www.pngitem.com/pimgs/m/86-868269_drone-logo-png-transparent-drone-ci-logo-png.png
+    message: "{{#success build.status}} ✅ Build #{{build.number}}\n`{{ build.event }}` of `{{repo.name}}` succeeded.\n Commit by {{commit.author}} on `{{commit.branch}}`:\n``` {{commit.message}} ```\n{{ build.link }} {{else}} ❌ Build #{{build.number}}\n`{{ build.event }}` of `{{repo.name}}` failed.\n Commit by {{commit.author}} on `{{commit.branch}}`:\n``` {{commit.message}} ```\n{{ build.link }} {{/success}}"
+    webhook_id:
+      from_secret: DISCORD_WEBHOOK_ID
+    webhook_token:
+      from_secret: DISCORD_WEBHOOK_TOKEN
+  when:
+    status: [success, failure]
+
+---
+kind: pipeline
+name: Nuget packages test
+
+trigger:
+  branch:
+    - main
+  event:
+    include:
+      - pull_request
+
+steps:
+- name: Test packages 
+  image: mcr.microsoft.com/dotnet/sdk:6.0
+  environment:
+    GITHUB_TOKEN:
+      from_secret: GITHUB_TOKEN
+  commands:
+    - dotnet build -c Release
+
+- name: discord-pr
+  pull: always
+  image: appleboy/drone-discord
+  settings:
+    avatar_url: https://www.pngitem.com/pimgs/m/86-868269_drone-logo-png-transparent-drone-ci-logo-png.png
+    message: "{{#success build.status}} ✅ Build #{{build.number}}\n`{{ build.event }}` of `{{repo.name}}` succeeded.\n Commit by {{commit.author}} on `{{commit.branch}}`:\n``` {{commit.message}} ```\n{{ build.link }} {{else}} ❌ Build #{{build.number}}\n`{{ build.event }}` of `{{repo.name}}` failed.\n Commit by {{commit.author}} on `{{commit.branch}}`:\n``` {{commit.message}} ```\n{{ build.link }} {{/success}}"
+    webhook_id:
+      from_secret: DISCORD_WEBHOOK_PR_ID
+    webhook_token:
+      from_secret: DISCORD_WEBHOOK_PR_TOKEN
+  when:
+    status: [success, failure]
