@@ -11,7 +11,8 @@ namespace NATS.Client
         /// Create new JetStream context
         /// </summary>
         /// <param name="options"></param>
+        /// <param name="streamNames"></param>
         /// <returns></returns>
-        IJetStream CreateJetStreamContext(Options options);
+        IJetStream CreateJetStreamContext(Options options, params string[] streamNames);
     }
 }

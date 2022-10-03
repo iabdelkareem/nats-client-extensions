@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>Latest</LangVersion>
     <IsPackable>true</IsPackable>
-    <VersionPrefix>1.0.2</VersionPrefix>
+    <VersionPrefix>1.0.3</VersionPrefix>
     <PackageTags>NATS;NATS.Client;DependencyInjection;NATS.Client.DependencyInjection;NATS.Client.Extensions.DependencyInjection;</PackageTags>
     <Authors>Ibrahim Abdelkareem</Authors>
     <PackageProjectUrl>https://github.com/happy-travel/nats-client-extensions</PackageProjectUrl>
@@ -14,7 +14,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Description>Added JetStream context</Description>
+    <Description>Added creating streams</Description>
   </PropertyGroup>
 
 
